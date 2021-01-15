@@ -1,0 +1,28 @@
+<h1 class="bd-title" id="content">JSON Data</h1>
+<br />
+<form *ngIf="jsonInfoFormGroup" [formGroup]="jsonInfoFormGroup">
+    <label>{{ label }}</label>
+    <div class="form-group">
+        <textarea [ngModel]="jsonObject" (ngModelChange)="valueChanged($event)" formControlName="locationJson"
+            class="form-control"></textarea>
+        <small class="form-text text-danger" style="color: red"
+            *ngIf="jsonInfoFormGroup.controls.locationJson.errors">{{jsonInfoFormGroup.controls.locationJson.errors.json.message}}<br /></small>
+        <button [disabled]="!jsonInfoFormGroup.valid" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    </div>
+
+    <div style="display: inline-grid;">
+        <input class="form-control" [value]="input" />
+        <br />
+        <select>
+            <option *ngFor="let options of dropdown">{{ options }}</option>
+        </select>
+        <br />
+        <div *ngFor="let check of checkbox; let i=index">
+            <label>
+                <input type="checkbox" [value]="check.value">
+                {{check}}
+            </label>
+        </div>
+    </div>
+
+</form>
